@@ -1,0 +1,64 @@
+** README **
+
+-> The src file only one file, i.e. pagerank.java
+
+-> pagerank.java 
+    - Implements the page rank algorithm using the Random Surfer Model
+    - To run, use: 
+        javac pagerank.java
+        java pagerank.java <inputFile> <lambda> <tau> <inlinkFileName> <pageRankFilename> <k>, in our case:
+        java pagerank.java links.srt.gz  0.20   0.005    inlinks.txt       pagerank.txt   100
+    - The parameters are optional
+
+
+** Description **
+
+-> pagerank.java
+    - This class does the following steps: Create a web graph from the given file. The graph consists of vertices (pages) and edges (links). 
+      Then it calculates the top k page  ranks and inlinks and prints them in the respective output files.
+    - webGraphGenerator() function 
+        > From the input files, it creates URL pairs, (source, destination)
+        > According to those pairs, it foinds out if one page is pointing to any other page, if it is, then the function stores those inlinks
+    - calculatePageRank() function 
+        > Calculates the pageRank 
+        > It first assigns a page rank to all the pages: 1 / N
+        > In each iteration, it creates a result vector R which stores lambda/the urls size in each entry
+        > Then we calculate the probability of a random jump and add it to each quantity in R
+        > We keep doing this till the page rank values converge
+    - l2NormCalculator() function
+        > Basically a helper function for the calculatePageRank() function
+        > It helps calculate the l2 norm for a certain p, q pair so that it can be compared with tau to check convergence of the page rank values
+
+
+
+** Libraries **
+
+-> java.io
+    > Provides for system input and output through data streams, serialization and the file system. 
+    > https://docs.oracle.com/javase/7/docs/api/java/io/package-summary.html
+    > Used in this project for mainly, printing, reading and writing to files
+
+-> java.util 
+    > Contains the collections framework, legacy collection classes, event model, date and time facilities, 
+      internationalization, and miscellaneous utility classes (a string tokenizer, a random-number generator, and a bit array)
+    > https://docs.oracle.com/javase/8/docs/api/java/util/package-summary.html
+    > Used in this project mainly to implement data structures and their methods, like: Maps, Lists, Sets, and ArrayLists
+
+-> java.neo
+    > The java.nio.file package defines interfaces and classes for the Java virtual machine to access files, file attributes, and file systems
+    > https://docs.oracle.com/javase/7/docs/api/java/io/File.html
+    > Used to write print Arraylists in the output files
+
+
+
+** Dependencies ** 
+
+-> There are no dependencies in this project
+
+
+
+** Running and Building **
+
+-> No special steps have to be taken to run or build this program
+-> First 10 lines of this README file give an easy way to run the proram
+-> Note: Specify the exact path of the input file or put it in the same folder as this java file
