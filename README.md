@@ -1,87 +1,46 @@
-# Search Engines and Information Retrieval
+# Information Retrieval Toolbox
 
-## Overview
+## Project Overview
 
-This comprehensive project for CMPSCI 446 explores various modules focusing on search engines, information retrieval, and web graph analysis. The project covers a range of topics outlined in the course description, offering practical implementations and tools for different aspects of information retrieval.
+This comprehensive Information Retrieval Toolbox was developed as part of COMPSCI 446, focusing on search engines and Information Retrieval (IR). It encompasses five distinct modules, each tailored to enhance specific aspects of the information retrieval process.
 
-## Table of Contents
+## Modules
 
-1. [Setup Module](#setup-module)
-   - [Description](#setup-description)
-   - [Functionality](#setup-functionality)
-   - [Output](#setup-output)
+### 1. Setup Module
 
-2. [Tokenization Module](#tokenization-module)
-   - [Description](#tokenization-description)
-   - [Functionality](#tokenization-functionality)
-   - [Statistics](#tokenization-statistics)
+**Description:**
+This module initializes the project and processes a gzipped input file, capturing essential statistics.
 
-3. [Query Processing Module](#query-processing-module)
-   - [Description](#query-processing-description)
-   - [Metrics](#query-processing-metrics)
+**Functionality:**
+- Reads and processes lines from a gzipped input file.
+- Writes the k-th token to the output file for lines with sufficient tokens.
+- Tracks and outputs total lines processed, along with min and max values.
 
-4. [Posting Module](#posting-module)
-   - [Description](#posting-description)
-   - [Query Types](#posting-query-types)
+**Output Files:**
+- `output_setup.txt`
 
-5. [Pagerank Module](#pagerank-module)
-   - [Description](#pagerank-description)
-   - [Parameters](#pagerank-parameters)
-   - [Output](#pagerank-output)
+### 2. Tokenization Module
 
----
+**Description:**
+A Java program performing advanced text tokenization on a gzipped input file.
 
-## 1. Setup Module<a name="setup-module"></a>
+**Functionality:**
+- Implements various tokenization methods, stopword removal, and stemming algorithms.
+- Handles URLs, numbers, abbreviations, hyphenated words, and punctuation.
+- Calculates word frequencies, unique tokens, and the top 100 most frequent words.
+- Implements the Porter stemming algorithm and handles short words.
 
-### Description<a name="setup-description"></a>
+**Output Files:**
+- `output_tokens.txt`: Tokenization results.
+- `output_statistics.txt`: Tokenization statistics.
+- `output_frequent_words.txt`: Top 100 most frequent words.
 
-The **Setup Module** initializes the project by processing a gzipped input file. It performs basic validation and captures essential statistics about the dataset.
+### 3. Query Processing Module
 
-### Functionality<a name="setup-functionality"></a>
+**Description:**
+Evaluates the performance of an information retrieval system, computing various metrics.
 
-- Reads each line from the gzipped input file.
-- Splits each line into tokens using space as a delimiter.
-- Writes the k-th token to the output file if the line has sufficient tokens.
-- Tracks the minimum and maximum values encountered.
-- Writes total lines processed, along with min and max values, to the output file.
-
-### Output<a name="setup-output"></a>
-
-- Output File: `output_setup.txt`
-- Contents:
-  - "Too Short" for lines with insufficient tokens.
-  - The k-th token for valid lines.
-  - Total lines processed.
-  - Minimum and maximum values.
-
-## 2. Tokenization Module<a name="tokenization-module"></a>
-
-### Description<a name="tokenization-description"></a>
-
-The **Tokenization Module** is a Java program performing advanced text tokenization on a gzipped input file. It covers multiple tokenization methods, stopword removal, stemming algorithms, and provides detailed statistics.
-
-### Functionality<a name="tokenization-functionality"></a>
-
-- Tokenization methods, stopword removal, and stemming.
-- Handling URLs, numbers, abbreviations, hyphenated words, and punctuation.
-- Calculating word frequencies, unique tokens, and top 100 most frequent words.
-- Implementing the Porter stemming algorithm and handling short words.
-
-### Statistics<a name="tokenization-statistics"></a>
-
-- Output Files:
-  - `output_tokens.txt`: Tokenization results.
-  - `output_statistics.txt`: Tokenization statistics.
-  - `output_frequent_words.txt`: Top 100 most frequent words.
-
-## 3. Query Processing Module<a name="query-processing-module"></a>
-
-### Description<a name="query-processing-description"></a>
-
-The **Query Processing Module** defines a class for evaluating the performance of an information retrieval system. It computes various metrics by comparing the system's output to relevance judgments.
-
-### Metrics<a name="query-processing-metrics"></a>
-
+**Metrics:**
 - NDCG@20
 - numRel
 - RR (Reciprocal Rank)
@@ -91,32 +50,34 @@ The **Query Processing Module** defines a class for evaluating the performance o
 - P@20% (Precision at 20% recall)
 - MAP (Mean Average Precision)
 
-## 4. Posting Module<a name="posting-module"></a>
+**Output Files:**
+- `output_query_metrics.txt`
 
-### Description<a name="posting-description"></a>
+### 4. Posting Module
 
-The **Posting Module** implements a simple information retrieval system. It builds an index from a JSON file containing documents and processes queries to retrieve relevant documents.
+**Description:**
+Implements a simple information retrieval system, building an index and processing queries.
 
-### Query Types<a name="posting-query-types"></a>
-
+**Query Types:**
 1. "or": Union of query terms.
 2. "and": Intersection of query terms.
 3. "ql": Query Likelihood model.
 
-## 5. Pagerank Module<a name="pagerank-module"></a>
+**Input Files:**
+- Queries: `queries.tsv`
+- Collection: `collection.json.gz`
 
-### Description<a name="pagerank-description"></a>
+**Output Files:**
+- `output_retrieval_results.txt`
 
-The **Pagerank Module** calculates PageRank values for a web graph. It takes command-line arguments and provides an efficient implementation of the PageRank algorithm.
+### 5. Pagerank Module
 
-### Parameters<a name="pagerank-parameters"></a>
+**Description:**
+Calculates PageRank values for a web graph.
 
+**Parameters:**
 - Input file, lambda, tau, inlinks filename, pagerank filename, and top k results.
 
-### Output<a name="pagerank-output"></a>
-
-- Output Files:
-  - `output_pagerank.txt`: Top k pages based on PageRank values.
-  - `output_inlinks.txt`: Top k pages based on inlinks.
-
----
+**Output Files:**
+- `output_pagerank.txt`: Top k pages based on PageRank values.
+- `output_inlinks.txt`: Top k pages based on inlinks.
