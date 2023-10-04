@@ -1,4 +1,4 @@
-# Project: CMPSCI 446 - Search Engines and Information Retrieval
+# Search Engines and Information Retrieval
 
 ## Overview
 
